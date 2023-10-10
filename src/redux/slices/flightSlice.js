@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getFlight } from "../actions/flightAction";
 
 
 const initialState={
@@ -11,8 +12,21 @@ const initialState={
 const flightSlice=createSlice({
     name:"flight",
     initialState,
-    extraReducers:{
+    extraReducers:(builder)=>{
+        builder.addCase(getFlight.pending,(state)=>{
+            state.isLoading=true;
+        })
 
+        .addCase(getFlight.fulfilled,(state,action)=>{
+            state.isLoading=false;
+            state.isError=false;
+            state.flights=action.payload;
+        })
+
+        .addCase(getFlight.rejected,(state)=>{
+            state.isError=true;
+            state.isLoading=false;
+        })
     }
 });
 
