@@ -1,9 +1,9 @@
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Polyline, Popup, TileLayer } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import { useSelector } from 'react-redux';
 import flightSlice from '../redux/slices/flightSlice';
 
-const MapView = ({openModel}) => {
+const MapView = ({ openModel }) => {
 
   const state = useSelector((store) => store);
 
@@ -18,11 +18,12 @@ const MapView = ({openModel}) => {
           <Popup>
             <div className='popup'>
               <p>kod:{flight.code}</p>
-              <button onClick={()=>openModel(flight.id)}>Detay</button>
+              <button className='detail-btn' onClick={() => openModel(flight.id)}>Detay</button>
             </div>
           </Popup>
         </Marker>)}
 
+      <Polyline positions={state?.route}/>
       </MapContainer>
     </div>
 

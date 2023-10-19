@@ -30,7 +30,7 @@ function App() {
         <button className={!showMap ?"active":""} onClick={()=>setShowMap(false)}>Liste Görünümü</button>
       </div>
 
-      {showMap ? <MapView openModel={openModel}/> : <ListView/>}
+      {showMap ? <MapView openModel={openModel}/> : <ListView openModel={openModel}/>}
       {/* Detail Side */}
       {showDetails && <SideDetail setShowDetails={setShowDetails} detailId={detailId}/>}
     </>

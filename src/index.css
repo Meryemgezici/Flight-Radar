@@ -108,7 +108,7 @@ body {
   width: 100px;
 }
 
-.popup button{
+.detail-btn{
   background-color: black;
   color: white;
   padding: 7px;
@@ -132,3 +132,24 @@ body {
   width:300px ;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination .active {
+  border-radius: 6px;
+}
+
+.pagination .active a {
+  padding: 10px;
+}
+
+.list-page {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  padding: 5px 20px;
+  justify-content: space-between;
+}

@@ -5,7 +5,8 @@ import { getFlight } from "../actions/flightAction";
 const initialState={
     flights:[],
     isLoading:true,
-    isError:false
+    isError:false,
+    route:[],
 };
 
 
@@ -27,8 +28,19 @@ const flightSlice=createSlice({
             state.isError=true;
             state.isLoading=false;
         })
+    },
+
+    reducers:{
+        setRoute:(state,action)=>{
+
+           const newRoute= action.payload.map((i)=>[i.lat,i.lng]);
+            state.route=newRoute;
+        }
     }
+
 });
 
 
 export default flightSlice.reducer;
+
+export const {setRoute}=flightSlice.actions;
